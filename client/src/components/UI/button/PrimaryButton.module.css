@@ -1,0 +1,18 @@
+.button, .button-invalid {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border-color: #0D0D0D;
+    border-style: solid;
+    border-width: 1px;
+    background: transparent;
+    font-size: 1rem;
+    color: #0D0D0D;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+    background-color: #7878bd;
+    border-color: #7878bd;
+    color: #F2F1E9;
+}

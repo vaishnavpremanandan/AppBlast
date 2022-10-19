@@ -1,0 +1,30 @@
+.headercontainer {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('../../../../public/jefferson-santos-9SoCnyQmkzI-unsplash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    color: #F2F1E9;
+    box-sizing: border-box;
+    width: 40vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+
+.headercontainer h1 {
+    font-weight: normal;
+    font-size: 4rem;
+    margin: 0;
+}
+
+.headercontainer p {
+    line-height: 1.5rem;
+}
+
+.headercontainer div {
+    width: 25rem;
+}

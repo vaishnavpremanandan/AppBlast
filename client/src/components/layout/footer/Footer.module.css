@@ -1,0 +1,10 @@
+.footer {
+    box-sizing: border-box;
+    padding: 0.75rem 4rem;
+    background-color: #0D0D0D;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #F2F1E9;
+    z-index: 5;
+}
