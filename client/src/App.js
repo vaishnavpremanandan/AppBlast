@@ -53,7 +53,6 @@ function App() {
       <Footer />
     </Fragment>
   )
-
 }
 
 export default App;

@@ -3,12 +3,6 @@
     flex-direction: column;
 }
 
-.form div {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-}
-
 .form h3 {
     margin: 0;
     color: #7878bd;
@@ -16,95 +10,4 @@
 
 .form hr {
     width: 100%;
-}
-
-.form span {
-    color: red;
-    margin-top: 0.3rem;
-    font-size: .9rem;
-}
-
-.input {
-    height: 44px;
-    background-color: #F2F1E9;
-    border-radius: .5rem;
-    padding: 0 1rem;
-    border: 1px solid black;
-    font-size: 1rem;
-}
-
-.input-invalid {
-    height: 44px;
-    background-color: #F2F1E9;
-    border-radius: .5rem;
-    padding: 0 1rem;
-    border: 1px solid red;
-    font-size: 1rem;
-}
-
-.input:focus-visible, .input-invalid:focus-visible {
-    outline: 0;
-}
-
-.textarea {
-    height: 8rem;
-    background-color: #F2F1E9;
-    border-radius: .5rem;
-    padding: 1rem;
-    border: 1px solid black;
-    font-size: 1rem;
-}
-
-.textarea-invalid {
-    height: 8rem;
-    background-color: #F2F1E9;
-    border-radius: .5rem;
-    padding: 1rem;
-    border: 1px solid red;
-    font-size: 1rem;
-}
-
-.textarea:focus-visible, .textarea-invalid:focus-visible {
-    outline: 0;
-}
-
-.form label {
-    margin-bottom: .3rem;
-    font-size: .9rem;
-    font-weight: bold;
-    color: #05060f99;
-}
-
-.file {
-    background-color: #F2F1E9;
-    border-radius: .5rem;
-    padding: 0.5rem;
-    border: 1px solid black;
-    font-size: 1rem;
-}
-
-.file-invalid {
-    background-color: #F2F1E9;
-    border-radius: .5rem;
-    padding: 0.5rem;
-    border: 1px solid red;
-    font-size: 1rem;
-}
-
-.file::-webkit-file-upload-button {
-    padding: 0.3rem;
-    border-radius: 0.5rem;
-    border-color: #0D0D0D;
-    border-style: solid;
-    border-width: 1px;
-    background: transparent;
-    font-size: 1rem;
-    color: #0D0D0D;
-    transition: all 0.2s ease-in-out;
-}
-
-.file::-webkit-file-upload-button:hover {
-    background-color: #7878bd;
-    border-color: #7878bd;
-    color: #F2F1E9;
 }

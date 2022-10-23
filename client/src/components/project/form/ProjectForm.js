@@ -6,6 +6,9 @@ import Card from '../../UI/card/Card';
 import classes from './ProjectForm.module.css';
 import Loading from '../../UI/loading/Loading';
 import PrimaryButton from '../../UI/button/PrimaryButton';
+import ProjectInput from '../input/ProjectInput';
+import ProjectTextarea from '../textarea/ProjectTextarea';
+import ProjectFile from '../file/ProjectFile';
 
 const ProjectForm = ({ project = { title: '', link: '', description: '' }, type, isLoading, submitFunc }) => {
     const [imageValue, setImageValue] = useState([]);
@@ -73,62 +76,44 @@ const ProjectForm = ({ project = { title: '', link: '', description: '' }, type,
         });
     }
 
-    const titleClass = titleHasError ? classes['input-invalid'] : classes.input;
-    const linkClass = linkHasError ? classes['input-invalid'] : classes.input;
-    const descriptionClass = descriptionHasError ? classes['textarea-invalid'] : classes.textarea;
-    const imageClass = imageHasError ? classes['file-invalid'] : classes.file;
-
     let content = (
         <form className={classes.form} onSubmit={onSubmitHandler}>
             <h3>{type}</h3>
             <hr></hr>
-            <div>
-                <label htmlFor='title'>Title</label>
-                <input
-                    type='text'
-                    id='title'
-                    value={titleValue}
-                    onChange={titleChangeHandler}
-                    onBlur={titleBlurHandler}
-                    className={titleClass}
-                />
-                {titleHasError && <span>{'Please enter a valid title'}</span>}
-            </div>
-            <div>
-                <label htmlFor='link'>Link (Website link or Github repo link)</label>
-                <input
-                    type='text'
-                    id='link'
-                    value={linkValue}
-                    onChange={linkChangeHandler}
-                    onBlur={linkBlurHandler}
-                    className={linkClass}
-                />
-                {linkHasError && <span>{'Please enter a valid link'}</span>}
-            </div>
-            <div>
-                <label htmlFor='description'>Description</label>
-                <textarea
-                    id='description'
-                    value={descriptionValue}
-                    onChange={descriptionChangeHandler}
-                    onBlur={descriptionBlurHandler}
-                    className={descriptionClass}
-                ></textarea>
-                {descriptionHasError && <span>{'Please enter a valid description'}</span>}
-            </div>
-            <div>
-                <label htmlFor='image'>
-                    {type === 'New Post' ? 'Image' : 'Change Existing Image (optional)'}
-                </label>
-                <input
-                    type='file'
-                    id='image'
-                    className={imageClass}
-                    onChange={imageChangeHandler}
-                />
-                {imageHasError && <span>{'Please upload a image'}</span>}
-            </div>
+            <ProjectInput
+                value={titleValue} 
+                onChangeHandler={titleChangeHandler} 
+                onBlurHandler={titleBlurHandler}
+                error={titleHasError} 
+                errorMsg='Please enter a valid title' 
+                id='title'
+                name='Title'
+            />
+            <ProjectInput
+                value={linkValue} 
+                onChangeHandler={linkChangeHandler} 
+                onBlurHandler={linkBlurHandler}
+                error={linkHasError} 
+                errorMsg='Please enter a valid link' 
+                id='link'
+                name='Link'
+            />
+            <ProjectTextarea 
+                value={descriptionValue} 
+                onChangeHandler={descriptionChangeHandler} 
+                onBlurHandler={descriptionBlurHandler}
+                error={descriptionHasError} 
+                errorMsg='Please enter a valid description' 
+                id='description'
+                name='Description'
+            />
+            <ProjectFile 
+                id='image'
+                type={type}
+                onChangeHandler={imageChangeHandler}
+                error={imageHasError}
+                errorMsg='Please upload a image'
+            />
             <PrimaryButton isDisabled={!formIsValid}>Submit</PrimaryButton>
         </form>
     );
@@ -144,7 +129,6 @@ const ProjectForm = ({ project = { title: '', link: '', description: '' }, type,
             </Card>
         </Main>
     )
-
 }
 
 export default ProjectForm;

@@ -24,7 +24,7 @@ const Projects = () => {
         } else if (category){
             sendRequest(category);
         } else {
-            sendRequest()
+            sendRequest();
         }
     }, [sendRequest, category]);
 
