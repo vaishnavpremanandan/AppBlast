@@ -1,6 +1,17 @@
 const Project = require('../models/project');
 const cloudinary = require('cloudinary').v2;
 
+// Calculates the average rating of a set of reviews
+
+const averageRating = (arr) => {
+    if (!arr.length || !arr) return 0;
+    let sum = 0;
+    for (let value of arr) {
+        sum += value.rating;
+    }
+    return Math.floor(sum / arr.length);
+}
+
 // Cloudinary Configuration
 
 cloudinary.config(
@@ -22,7 +33,28 @@ module.exports.createProject = async (req, res, next) => {
 // Show all projects/post
 
 module.exports.showProjects = async (req, res, next) => {
-    const projects = await Project.find().populate('reviews').populate('author', 'username');
+    const { category } = req.query;
+    const projects = await Project.find().populate('reviews').populate('author');
+    if (category && category === 'newposts') {
+        projects.sort((a, b) => b.date - a.date);
+        return res.status(200).send(projects);
+    }
+    if (category && category === 'mostreviewed') {
+        projects.sort((a, b) => b.reviews.length - a.reviews.length);
+        return res.status(200).send(projects);
+    }
+    if (category && category === 'toprated') {
+        projects.sort((a, b) => averageRating(b.reviews) - averageRating(a.reviews));
+        return res.status(200).send(projects);
+    }
+    return res.status(200).send(projects);
+}
+
+// Show all projects of a certain user 
+
+module.exports.showProjectsUser = async (req, res) => {
+    const { id } = req.params;
+    const projects = await Project.find({ author: id }).populate('reviews').populate('author');
     res.status(200).send(projects);
 }
 
@@ -35,7 +67,7 @@ module.exports.showIndividualProject = async (req, res, next) => {
         populate: {
             path: 'author'
         }
-    }).populate('author', 'username _id');
+    }).populate('author');
     if (!project) {
         res.status(404).send({ status: '404', message: 'Project not found' });
     } else {

@@ -1,7 +1,25 @@
 
 // Show All Projects Request
 
-export const getProjects = async () => {
+export const getProjects = async (category = null, userId = null, userToken = null) => {
+    if (category && category === 'yourposts') {
+        const response = await fetch(`http://localhost:5000/projects/user/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': userToken
+            }
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.message || 'Something Went Wrong');
+        return data;
+    }
+    if (category) {
+        const response = await fetch(`http://localhost:5000/projects?category=${category}`);
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.message || 'Something Went Wrong');
+        return data;
+    }
     const response = await fetch('http://localhost:5000/projects');
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || 'Something Went Wrong');

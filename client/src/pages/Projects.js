@@ -7,26 +7,28 @@ import Loading from '../components/UI/loading/Loading';
 import ShowError from '../components/layout/error/ShowError';
 import Container from '../components/layout/container/Container';
 import Category from '../components/layout/category/Category';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Projects = () => {
     const location = useLocation();
-    const history = useHistory();
     const { sendRequest, status, data: projects, error } = useHttp(getProjects, true);
-    const queryParams = new URLSearchParams(location.search);
+    const category = new URLSearchParams(location.search).get('category');
+    const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+    const userId = useSelector(state => state.auth.currentUserId);
+    const token = useSelector(state => state.auth.token);
 
     useEffect(() => {
-        sendRequest();
-    }, [sendRequest]);
+        if (isLoggedIn && category && category === 'yourposts') {
+            sendRequest(category, userId, token);
+        } else if (category){
+            sendRequest(category);
+        } else {
+            sendRequest()
+        }
+    }, [sendRequest, category]);
 
-    const categoryHandler = (category) => {
-        history.push({
-            pathname: location.pathname,
-            search: `?category=${category}`
-        })
-    }
-
-    let content = <ProjectList projects={projects} category={queryParams.get('category')} />;
+    let content = <ProjectList projects={projects} />;
 
     if (status === 'pending') {
         content = <Loading />
@@ -44,10 +46,7 @@ const Projects = () => {
         <Fragment>
             <Header />
             <Container>
-                <Category
-                    onForwardCategory={categoryHandler}
-                    activeCategory={queryParams.get('category')}
-                />
+                <Category />
                 {content}
             </Container>
         </Fragment>

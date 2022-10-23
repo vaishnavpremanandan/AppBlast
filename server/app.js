@@ -11,7 +11,6 @@ const AppError = require('./utils/AppError');
 const projectRoute = require('./routes/project');
 const reviewRoute = require('./routes/review');
 const userRoute = require('./routes/user');
-const User = require('./models/user');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 

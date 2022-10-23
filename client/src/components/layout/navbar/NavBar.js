@@ -23,11 +23,9 @@ const NavBar = () => {
 
     return (
         <nav className={classes.navbar}>
+            <h3>AB</h3>
             <ul>
-                <li>
-                    <h3>AB</h3>
-                </li>
-                <NavLink to='/projects' className={classes.home}>
+                <NavLink to='/projects' className={classes.navlink}>
                     <li>Home</li>
                 </NavLink>
                 {isLoggedIn ? <li onClick={logoutHandler}>Logout</li> : <li onClick={showLoginHandler}>Login</li>}

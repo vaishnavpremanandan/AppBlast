@@ -9,6 +9,13 @@ const passport = require('passport');
 
 router.get('/', wrapAsync(project.showProjects));
 
+// Show all projects of a certain user 
+
+router.get(
+    '/user/:id', 
+    passport.authenticate('jwt', { session: false }), 
+    wrapAsync(project.showProjectsUser));
+
 // Create project route
 
 router.post(
