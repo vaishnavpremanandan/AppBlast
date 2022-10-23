@@ -1,6 +1,8 @@
 const Project = require('../models/project');
 const cloudinary = require('cloudinary').v2;
 
+const categories = ['toprated', 'newposts', 'mostreviewed'];
+
 // Calculates the average rating of a set of reviews
 
 const averageRating = (arr) => {
@@ -35,6 +37,9 @@ module.exports.createProject = async (req, res, next) => {
 module.exports.showProjects = async (req, res, next) => {
     const { category } = req.query;
     const projects = await Project.find().populate('reviews').populate('author');
+    if (category && categories.indexOf(category) < 0) {
+        return res.status(404).json({ status: 404, message: 'Unknown Category'});
+    }
     if (category && category === 'newposts') {
         projects.sort((a, b) => b.date - a.date);
         return res.status(200).send(projects);

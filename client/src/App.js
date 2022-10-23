@@ -10,35 +10,16 @@ import EditProject from './pages/EditProject';
 import Notification from './components/UI/notification/Notification';
 import ErrorPage from './pages/ErrorPage';
 import Login from './components/user/Login';
-import useHttp from './hooks/useHttp';
-import { getUser } from './lib/user-api';
-import { loginAgainActionHandler } from './store/auth-actions';
+import { loginActionHandler } from './store/auth-actions';
 
 function App() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const showLogin = useSelector(state => state.login.show);
 
-  const { data, sendRequest, status, error } = useHttp(getUser);
-
   useEffect(() => {
-    if (localStorage.getItem('token') && !isLoggedIn) {
-      const expirationTime = new Date(localStorage.getItem('expiration')).getTime();
-      const currentTime = new Date().getTime();
-      if (expirationTime > currentTime) sendRequest(localStorage.getItem('token'));
-    }
+    dispatch(loginActionHandler());
   }, []);
-
-  useEffect(() => {
-    if (status === 'completed' && !error) {
-      const userData = {
-        token: localStorage.getItem('token'),
-        expirationDate: localStorage.getItem('expiration'),
-        userId: data.id
-      }
-      dispatch(loginAgainActionHandler(userData));
-    }
-  }, [status, error]);
 
   return (
     <Fragment>

@@ -1,13 +1,34 @@
 import { authAction } from './auth-slice';
+import { getUser } from '../lib/user-api';
 
 let logoutTimer;
 
-export const loginActionHandler = (data) => {
-    return (dispatch) => {
-        dispatch(authAction.login(data));
-        logoutTimer = setTimeout(() => {
-            dispatch(authAction.logout());
-        }, data.expiresIn * 1000);
+export const loginActionHandler = (data = null) => {
+    return async (dispatch) => {
+        if (!localStorage.getItem('token') && data) {
+            dispatch(authAction.login(data));
+            const expirationDate = new Date(data.expiresIn * 1000 + new Date().getTime());
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('expiration', expirationDate);
+            logoutTimer = setTimeout(() => {
+                dispatch(authAction.logout());
+            }, data.expiresIn * 1000);
+        } else {
+            const expirationTime = new Date(localStorage.getItem('expiration')).getTime();
+            const currentTime = new Date().getTime();
+            if (expirationTime > currentTime) {
+                const resData = await getUser(localStorage.getItem('token'));
+                const userData = {
+                    token: localStorage.getItem('token'),
+                    expiresIn: (new Date(localStorage.getItem('expiration')).getTime() - currentTime) / 1000,
+                    userId: resData.id
+                }
+                dispatch(authAction.login(userData));
+                logoutTimer = setTimeout(() => {
+                    dispatch(authAction.logout());
+                }, expirationTime - currentTime);
+            }
+        }
     }
 }
 
@@ -19,15 +40,3 @@ export const logoutActionHandler = () => {
         }
     }
 }
-
-export const loginAgainActionHandler = (data) => {
-    return (dispatch) => {
-        const currentTime = new Date().getTime();
-        const expirationTime = new Date(data.expirationDate).getTime();
-        dispatch(authAction.loginAgain(data));
-        logoutTimer = setTimeout(() => {
-            dispatch(authAction.logout());
-        }, expirationTime - currentTime);
-    }
-}
-
