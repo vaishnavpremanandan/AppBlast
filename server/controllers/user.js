@@ -1,7 +1,7 @@
-const Project = require('../models/project');
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const secret = process.env.SECRET || 'thisShouldBeASecret';
 
 // Register the user
 
@@ -33,7 +33,7 @@ module.exports.loginUser = async (req, res, next) => {
             res.status(400).json({ status: '400', message: 'Incorrect password'});
         } else {
             const payload = { id: findUser._id, username: findUser.username };
-            jwt.sign(payload, 'secret', { expiresIn: 3600 }, (err, token) => {
+            jwt.sign(payload, secret, { expiresIn: 3600 }, (err, token) => {
                 res.json({
                     success: true,
                     expiresIn: 3600,

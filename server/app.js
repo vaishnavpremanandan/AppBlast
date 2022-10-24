@@ -16,7 +16,7 @@ const helmet = require('helmet');
 
 // Mongoose Connection
 
-const dbUrl = 'mongodb://localhost:27017/projectReview';
+const dbUrl =  process.env.DB_URL ||'mongodb://localhost:27017/projectReview';
 mongoose.connect(dbUrl);
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -35,11 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Helmet middleware for security
 
-app.use(helmet({
-    contentSecurityPolicy: false,
-    crossOriginEmbedderPolicy: false,
-    // crossOriginResourcePolicy: false,
-}));
+app.use(helmet());
 
 // Searches for any keys in objects that begin with a '$' sign or contain a '.'
 // from req.body, req.query or req.params
@@ -77,6 +73,7 @@ app.use((err, req, res, next) => {
 
 // listens for connections on the given path
 
-app.listen(5000, () => {
-    console.log('Listening to port 5000');
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+    console.log('Listening to port ' + port);
 });
