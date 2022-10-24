@@ -1,26 +1,41 @@
+const URL = 'http://localhost:5000';
 
 // Show All Projects Request
 
-export const getProjects = async (category = null, userId = null, userToken = null) => {
-    if (category && category === 'yourposts') {
-        const response = await fetch(`http://localhost:5000/projects/user/${userId}`, {
+export const getProjects = async (category, userId, token) => {
+    if (category === 'yourposts' && userId && token) {
+        const response = await fetch(`${URL}/projects/user/${userId}`, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
-                'Authorization': userToken
+                'Authorization': token
             }
         });
         const data = await response.json();
-        if (!response.ok) throw new Error(data.message || 'Something Went Wrong');
+        if (!response.ok) throw new Error( data.message || 'Something Went Wrong');
         return data;
-    }
-    if (category) {
-        const response = await fetch(`http://localhost:5000/projects?category=${category}`);
+    } else if (category && category !== 'yourposts') {
+        const response = await fetch(`${URL}/projects?category=${category}`);
         const data = await response.json();
-        if (!response.ok) throw new Error(data.message || 'Something Went Wrong');
+        if (!response.ok) throw new Error( data.message || 'Something Went Wrong');
         return data;
     }
-    const response = await fetch('http://localhost:5000/projects');
+    const response = await fetch(`${URL}/projects`);
+    const data = await response.json();
+    if (!response.ok) throw new Error( data.message || 'Something Went Wrong');
+    return data;
+}
+
+// Show all projects of a certain user
+
+export const getUserProject = async (userId, token) => {
+    const response = await fetch(`${URL}/projects/user/${userId}`, {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': token
+        }
+    });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || 'Something Went Wrong');
     return data;
@@ -29,7 +44,7 @@ export const getProjects = async (category = null, userId = null, userToken = nu
 // Show Individual Project Request
 
 export const getIndividualProject = async (projectId) => {
-    const response = await fetch(`http://localhost:5000/projects/${projectId}`);
+    const response = await fetch(`${URL}/projects/${projectId}`);
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || 'Something Went Wrong');
     return data;
@@ -38,7 +53,7 @@ export const getIndividualProject = async (projectId) => {
 // Delete Project Request
 
 export const deleteProject = async (projectId, projectAuthorId, userToken) => {
-    const response = await fetch(`http://localhost:5000/projects/${projectId}`, {
+    const response = await fetch(`${URL}/projects/${projectId}`, {
         method: 'DELETE',
         body: JSON.stringify({ author: projectAuthorId }),
         headers: {
@@ -81,7 +96,7 @@ export const editProject = async (projectData, projectId) => {
         description: projectData.description,
         author: projectData.author,
     };
-    const response = await fetch(`http://localhost:5000/projects/${projectId}`, {
+    const response = await fetch(`${URL}/projects/${projectId}`, {
         method: 'PUT',
         body: JSON.stringify(transformedData),
         headers: {
@@ -118,7 +133,7 @@ export const newProject = async (projectData) => {
         description: projectData.description,
         author: projectData.author,
     };
-    const response = await fetch(`http://localhost:5000/projects`, {
+    const response = await fetch(`${URL}/projects`, {
         method: 'POST',
         body: JSON.stringify(transformedData),
         headers: {

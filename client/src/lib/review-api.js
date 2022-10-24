@@ -1,8 +1,9 @@
+const URL = 'http://localhost:5000';
 
 // Create review request
 
 export const newReview = async (reviewData, projectId, userToken) => {
-    const response = await fetch(`http://localhost:5000/projects/${projectId}/reviews`, {
+    const response = await fetch(`${URL}/projects/${projectId}/reviews`, {
         method: 'POST',
         body: JSON.stringify(reviewData),
         headers: {
@@ -18,7 +19,7 @@ export const newReview = async (reviewData, projectId, userToken) => {
 // Delete review request
 
 export const deleteReview = async (projectId, reviewId, userData) => {
-    const response = await fetch(`http://localhost:5000/projects/${projectId}/reviews/${reviewId}`, {
+    const response = await fetch(`${URL}/projects/${projectId}/reviews/${reviewId}`, {
         method: 'DELETE',
         body: JSON.stringify({ author: userData.author }),
         headers: {

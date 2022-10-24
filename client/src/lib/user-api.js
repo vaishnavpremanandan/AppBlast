@@ -1,8 +1,9 @@
+const URL = 'http://localhost:5000';
 
 // Register user request
 
 export const newUser = async (userData) => {
-    const response = await fetch(`http://localhost:5000/signup`, {
+    const response = await fetch(`${URL}/signup`, {
         method: 'POST',
         body: JSON.stringify(userData),
         headers: {
@@ -17,7 +18,7 @@ export const newUser = async (userData) => {
 // Login user request
 
 export const loginUser = async (userData) => {
-    const response = await fetch(`http://localhost:5000/login`, {
+    const response = await fetch(`${URL}/login`, {
         method: 'POST',
         body: JSON.stringify(userData),
         headers: {
@@ -32,7 +33,7 @@ export const loginUser = async (userData) => {
 // Get user request
 
 export const getUser = async(token) => {
-    const userRes = await fetch('http://localhost:5000/protected', {
+    const userRes = await fetch(`${URL}/protected`, {
         method: 'GET',
         headers: {
             'Content-Type' : 'application/json',

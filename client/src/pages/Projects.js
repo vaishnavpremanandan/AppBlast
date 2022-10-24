@@ -19,14 +19,14 @@ const Projects = () => {
     const token = useSelector(state => state.auth.token);
 
     useEffect(() => {
-        if (isLoggedIn && category && category === 'yourposts') {
+        if (category && category == 'yourposts' && isLoggedIn) {
             sendRequest(category, userId, token);
-        } else if (category){
+        } else if (category && category !== 'yourposts') {
             sendRequest(category);
         } else {
             sendRequest();
         }
-    }, [sendRequest, category]);
+    }, [sendRequest, category, userId, token, isLoggedIn]);
 
     let content = <ProjectList projects={projects} />;
 
