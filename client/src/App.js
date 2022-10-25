@@ -1,16 +1,18 @@
-import { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import NavBar from './components/layout/navbar/NavBar';
 import Footer from './components/layout/footer/Footer';
-import Projects from './pages/Projects';
-import NewProject from './pages/NewProject';
-import ShowProject from './pages/ShowProject';
-import EditProject from './pages/EditProject';
 import Notification from './components/UI/notification/Notification';
-import ErrorPage from './pages/ErrorPage';
 import Login from './components/user/Login';
 import { loginActionHandler } from './store/auth-actions';
+import Loading from './components/UI/loading/Loading';
+
+const Projects = React.lazy(() => import('./pages/Projects'));
+const NewProject = React.lazy(() => import('./pages/NewProject'));
+const ShowProject = React.lazy(() => import('./pages/ShowProject'));
+const EditProject = React.lazy(() => import('./pages/EditProject'));
+const ErrorPage = React.lazy(() => import('./pages/ErrorPage'));
 
 function App() {
   const dispatch = useDispatch();
@@ -23,34 +25,36 @@ function App() {
 
   return (
     <Fragment>
-      {showLogin && <Login />}
-      <NavBar />
-      <Notification />
-      <Switch>
-        <Route path='/' exact>
-          <Redirect to='/projects' />
-        </Route>
-        <Route path='/projects' exact>
-          <Projects />
-        </Route>
-        {isLoggedIn &&
-          <Route path='/projects/new' exact>
-            <NewProject />
+      <Suspense fallback={ <Loading /> }>
+        {showLogin && <Login />}
+        <NavBar />
+        <Notification />
+        <Switch>
+          <Route path='/' exact>
+            <Redirect to='/projects' />
           </Route>
-        }
-        <Route path='/projects/:id' exact>
-          <ShowProject />
-        </Route>
-        {isLoggedIn &&
-          <Route path='/projects/:id/edit' exact>
-            <EditProject />
+          <Route path='/projects' exact>
+            <Projects />
           </Route>
-        }
-        <Route path='*'>
-          <ErrorPage />
-        </Route>
-      </Switch>
-      <Footer />
+          {isLoggedIn &&
+            <Route path='/projects/new' exact>
+              <NewProject />
+            </Route>
+          }
+          <Route path='/projects/:id' exact>
+            <ShowProject />
+          </Route>
+          {isLoggedIn &&
+            <Route path='/projects/:id/edit' exact>
+              <EditProject />
+            </Route>
+          }
+          <Route path='*'>
+            <ErrorPage />
+          </Route>
+        </Switch>
+        <Footer />
+      </Suspense>
     </Fragment>
   )
 }
