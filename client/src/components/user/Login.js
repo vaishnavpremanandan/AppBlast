@@ -64,8 +64,10 @@ const Login = () => {
 
     useEffect(() => {
         if (newUserStatus === 'completed' && !newUserError) {
-            hideLoginHandler();
-            dispatch(showNotif(newUserData.message, 'success'));
+            loginUserRequest({
+                email: emailValue,
+                password: passwordValue
+            });
         }
     }, [newUserStatus, newUserError, dispatch]);
 
@@ -73,7 +75,7 @@ const Login = () => {
         if (loginUserStatus === 'completed' && !loginUserError) {
             hideLoginHandler();
             dispatch(loginActionHandler(loginUserData));
-            dispatch(showNotif('Welcome', 'success'));
+            dispatch(showNotif(`Welcome`, 'success'));
         }
     }, [loginUserStatus, loginUserError, loginUserData]);
 
@@ -107,12 +109,7 @@ const Login = () => {
                 email: emailValue,
                 password: passwordValue
             });
-        } else {
-            return;
         }
-        usernameReset();
-        emailReset();
-        passwordReset();
     }
 
     const usernameClass = usernameHasError ? classes['input-invalid'] : classes.input;
