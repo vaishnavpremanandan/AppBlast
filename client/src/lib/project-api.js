@@ -1,8 +1,9 @@
-const URL = 'http://localhost:5000';
+const URL = process.env.REACT_APP_URL || 'http://localhost:5000';
 
 // Show All Projects Request
 
 export const getProjects = async (category, userId, token) => {
+    console.log(URL);
     if (category === 'yourposts' && userId && token) {
         const response = await fetch(`${URL}/projects/user/${userId}`, {
             method: 'GET',
