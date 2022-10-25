@@ -29,7 +29,7 @@ cloudinary.config(
 module.exports.createProject = async (req, res, next) => {
     const project = new Project(req.body);
     await project.save();
-    res.status(200).send({ status: '200', message: 'Successfully created a post' });
+    res.status(200).json({ status: '200', message: 'Successfully created a post' });
 }
 
 // Show all projects/post
@@ -38,7 +38,7 @@ module.exports.showProjects = async (req, res, next) => {
     const { category } = req.query;
     const projects = await Project.find().populate('reviews').populate('author');
     if (category && categories.indexOf(category) < 0) {
-        return res.status(404).json({ status: 404, message: 'Unknown Category'});
+        return res.status(400).json({ status: 400, message: 'Unknown Category'});
     }
     if (category && category === 'newposts') {
         projects.sort((a, b) => b.date - a.date);
@@ -74,7 +74,7 @@ module.exports.showIndividualProject = async (req, res, next) => {
         }
     }).populate('author');
     if (!project) {
-        res.status(404).send({ status: '404', message: 'Project not found' });
+        res.status(400).json({ status: '400', message: 'Project not found' });
     } else {
         res.status(200).send(project);
     }
@@ -89,7 +89,7 @@ module.exports.editProject = async (req, res, next) => {
         await cloudinary.uploader.destroy(project.image.filename);
     }
     await Project.findByIdAndUpdate(id, req.body);
-    res.status(200).send({ status: '200', message: 'Successfully edited a post' });
+    res.status(200).json({ status: '200', message: 'Successfully edited a post' });
 }
 
 // Delete project/post
@@ -99,5 +99,5 @@ module.exports.deleteProject = async (req, res, next) => {
     const project = await Project.findById(id);
     await cloudinary.uploader.destroy(project.image.filename);
     await Project.findByIdAndDelete(id);
-    res.status(200).send({ status: '200', message: 'Successfully deleted a post' });
+    res.status(200).json({ status: '200', message: 'Successfully deleted a post' });
 }

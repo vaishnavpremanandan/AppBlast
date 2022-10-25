@@ -61,14 +61,14 @@ app.use('/projects/:id/reviews', reviewRoute);
 // New Error to all unrecognized routes
 
 app.all('*', (req, res, next) => {
-    next(new AppError('Not Found', 404));
+    next(new AppError('Not Found', 400));
 });
 
 // Error Handler
 
 app.use((err, req, res, next) => {
     const { status = 500, message = 'Something went wrong' } = err;
-    res.status(status).send({status: status.toString(), message});
+    res.status(status).json({status: status.toString(), message});
 })
 
 // listens for connections on the given path
