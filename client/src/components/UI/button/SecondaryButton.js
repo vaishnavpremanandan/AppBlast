@@ -1,3 +1,4 @@
+import React from 'react';
 import classes from './SecondaryButton.module.css';
 
 const SecondaryButton = ({ children, onClick }) => {
@@ -8,4 +9,4 @@ const SecondaryButton = ({ children, onClick }) => {
     )
 }
 
-export default SecondaryButton;
+export default React.memo(SecondaryButton);

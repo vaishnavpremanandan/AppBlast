@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import classes from './ReviewForm.module.css';
 import { Rating } from "react-simple-star-rating";
@@ -47,4 +47,4 @@ const ReviewForm = ({ onNewReview }) => {
     );
 }
 
-export default ReviewForm;
+export default React.memo(ReviewForm);

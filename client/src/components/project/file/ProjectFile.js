@@ -1,3 +1,4 @@
+import React from 'react';
 import classes from './ProjectFile.module.css';
 
 const ProjectFile = ({ id, type, onChangeHandler, error, errorMsg }) => {
@@ -19,4 +20,4 @@ const ProjectFile = ({ id, type, onChangeHandler, error, errorMsg }) => {
     );
 }
 
-export default ProjectFile;
+export default React.memo(ProjectFile);

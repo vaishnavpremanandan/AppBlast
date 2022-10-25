@@ -1,3 +1,4 @@
+import React from 'react';
 import classes from './ProjectTextarea.module.css';
 
 const ProjectTextarea = ({ value, onChangeHandler, onBlurHandler, error, errorMsg, id, name }) => {
@@ -18,4 +19,4 @@ const ProjectTextarea = ({ value, onChangeHandler, onBlurHandler, error, errorMs
     );
 }
 
-export default ProjectTextarea;
+export default React.memo(ProjectTextarea);

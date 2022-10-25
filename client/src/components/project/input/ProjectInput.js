@@ -1,3 +1,4 @@
+import React from 'react'
 import classes from './ProjectInput.module.css';
 
 const ProjectInput = ({ value, onChangeHandler, onBlurHandler, error, errorMsg, id, name }) => {
@@ -19,4 +20,4 @@ const ProjectInput = ({ value, onChangeHandler, onBlurHandler, error, errorMsg, 
     );
 }
 
-export default ProjectInput;
+export default React.memo(ProjectInput);
