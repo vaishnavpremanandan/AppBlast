@@ -13,7 +13,9 @@ export const loginActionHandler = (data = null) => {
             logoutTimer = setTimeout(() => {
                 dispatch(authAction.logout());
             }, data.expiresIn * 1000);
-        } else {
+            return;
+        }
+        if (localStorage.getItem('token') && !data) {
             const expirationTime = new Date(localStorage.getItem('expiration')).getTime();
             const currentTime = new Date().getTime();
             if (expirationTime > currentTime) {
@@ -27,8 +29,11 @@ export const loginActionHandler = (data = null) => {
                 logoutTimer = setTimeout(() => {
                     dispatch(authAction.logout());
                 }, expirationTime - currentTime);
+            } else {
+                dispatch(authAction.logout());
             }
         }
+        return;
     }
 }
 
