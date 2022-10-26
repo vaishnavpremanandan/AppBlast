@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
 import NavBar from './components/layout/navbar/NavBar';
 import Footer from './components/layout/footer/Footer';
 import Notification from './components/UI/notification/Notification';

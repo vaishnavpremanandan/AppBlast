@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
-import useValidation from '../../../hooks/useValidation';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import useValidation from '../../../hooks/useValidation';
+
 import Main from '../../layout/main/Main';
 import Card from '../../UI/card/Card';
 import classes from './ProjectForm.module.css';
@@ -47,7 +50,7 @@ const ProjectForm = ({ project = { title: '', link: '', description: '' }, type,
         setInitialTitle(project.title);
         setInitialLink(project.link);
         setInitialDescription(project.description);
-    }, []);
+    }, [setInitialTitle, setInitialLink, setInitialDescription]);
 
     const imageChangeHandler = (event) => {
         setImageHasError(false);
@@ -129,6 +132,13 @@ const ProjectForm = ({ project = { title: '', link: '', description: '' }, type,
             </Card>
         </Main>
     )
+}
+
+ProjectForm.propTypes = {
+    project: PropTypes.object,
+    type: PropTypes.string,
+    isLoading: PropTypes.bool,
+    submitFunc: PropTypes.func,
 }
 
 export default ProjectForm;

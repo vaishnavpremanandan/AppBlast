@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+
 import classes from './ProjectTextarea.module.css';
 
 const ProjectTextarea = ({ value, onChangeHandler, onBlurHandler, error, errorMsg, id, name }) => {
@@ -17,6 +19,16 @@ const ProjectTextarea = ({ value, onChangeHandler, onBlurHandler, error, errorMs
             {error && <span>{errorMsg}</span>}
         </div>
     );
+}
+
+ProjectTextarea.propTypes = {
+    value: PropTypes.string,
+    onChangeHandler: PropTypes.func,
+    onBlurHandler: PropTypes.func,
+    error: PropTypes.bool,
+    errorMsg: PropTypes.string,
+    id: PropTypes.string,
+    name: PropTypes.string
 }
 
 export default React.memo(ProjectTextarea);

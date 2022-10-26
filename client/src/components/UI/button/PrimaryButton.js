@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import classes from './PrimaryButton.module.css';
 
 const PrimaryButton = ({ children, isDisabled = false, onClick}) => {
@@ -8,6 +10,12 @@ const PrimaryButton = ({ children, isDisabled = false, onClick}) => {
             { children }
         </button>
     );
+}
+
+PrimaryButton.propTypes = {
+    children: PropTypes.string,
+    isDisabled: PropTypes.bool,
+    onClick: PropTypes.func
 }
 
 export default PrimaryButton;

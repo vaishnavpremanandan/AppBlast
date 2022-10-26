@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Rating } from 'react-simple-star-rating';
+import PropTypes from 'prop-types';
+
 import Card from '../../UI/card/Card';
 import classes from './ProjectItem.module.css';
-import { Rating } from 'react-simple-star-rating';
 import { deleteProject } from '../../../lib/project-api';
 import useHttp from '../../../hooks/useHttp';
 import Loading from '../../UI/loading/Loading';
@@ -91,6 +93,11 @@ const ProjectItem = ({ project, readOnly }) => {
             {content}
         </Card>
     );
+}
+
+ProjectItem.propTypes = {
+    projects: PropTypes.object,
+    readOnly: PropTypes.bool
 }
 
 export default ProjectItem;

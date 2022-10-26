@@ -1,7 +1,8 @@
-import SecondaryButton from '../../UI/button/SecondaryButton';
-import classes from './Header.module.css';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+
+import SecondaryButton from '../../UI/button/SecondaryButton';
+import classes from './Header.module.css';
 import { loginAction } from '../../../store/login-form-slice';
 
 const Header = () => {

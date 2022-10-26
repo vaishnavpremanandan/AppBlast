@@ -1,5 +1,7 @@
 import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import Card from '../UI/card/Card';
 import ReviewForm from './form/ReviewForm';
 import ReviewList from './list/ReviewList';
@@ -20,6 +22,13 @@ const Review = ({ onDeleteReview, onAddReview, reviews, isLoading }) => {
             {isLoading ? <Loading /> : content }
         </Card>
     );
+}
+
+Review.propTypes = {
+    onDeleteReview: PropTypes.func,
+    onAddReview: PropTypes.func,
+    reviews: PropTypes.array,
+    isLoading: PropTypes.bool
 }
 
 export default Review;

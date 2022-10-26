@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import classes from './ReviewForm.module.css';
 import { Rating } from "react-simple-star-rating";
+import PropTypes from 'prop-types';
+
+import classes from './ReviewForm.module.css';
 import PrimaryButton from '../../UI/button/PrimaryButton';
 
 const ReviewForm = ({ onNewReview }) => {
@@ -45,6 +47,10 @@ const ReviewForm = ({ onNewReview }) => {
             <PrimaryButton isDisabled={!formIsValid}>Submit</PrimaryButton>
         </form>
     );
+}
+
+ReviewForm.propTypes = {
+    onNewReview: PropTypes.func
 }
 
 export default React.memo(ReviewForm);

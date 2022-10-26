@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-import ProjectForm from "../components/project/form/ProjectForm";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import ProjectForm from "../components/project/form/ProjectForm";
 import { newProject } from "../lib/project-api";
 import useHttp from '../hooks/useHttp';
-import { useDispatch } from "react-redux";
 import { showNotif } from '../store/notification-actions';
 
 const NewProject = () => {

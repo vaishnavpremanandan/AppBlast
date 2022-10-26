@@ -1,4 +1,7 @@
 import { useEffect, Fragment } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import { getProjects } from '../lib/project-api';
 import Header from '../components/layout/header/Header';
 import ProjectList from '../components/project/list/ProjectList';
@@ -7,8 +10,7 @@ import Loading from '../components/UI/loading/Loading';
 import ShowError from '../components/layout/error/ShowError';
 import Container from '../components/layout/container/Container';
 import Category from '../components/layout/category/Category';
-import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+
 
 const Projects = () => {
     const location = useLocation();
@@ -19,7 +21,7 @@ const Projects = () => {
     const token = useSelector(state => state.auth.token);
 
     useEffect(() => {
-        if (category && category == 'yourposts' && isLoggedIn) {
+        if (category && category === 'yourposts' && isLoggedIn) {
             sendRequest(category, userId, token);
         } else if (category && category !== 'yourposts') {
             sendRequest(category);

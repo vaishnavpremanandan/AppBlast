@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import classes from './ProjectFile.module.css';
 
 const ProjectFile = ({ id, type, onChangeHandler, error, errorMsg }) => {
@@ -18,6 +20,14 @@ const ProjectFile = ({ id, type, onChangeHandler, error, errorMsg }) => {
             {error && <span>{errorMsg}</span>}
         </div>
     );
+}
+
+ProjectFile.propTypes = {
+    id: PropTypes.string, 
+    type: PropTypes.string, 
+    onChangeHandler: PropTypes.func, 
+    error: PropTypes.bool, 
+    errorMsg: PropTypes.string,
 }
 
 export default React.memo(ProjectFile);

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import Card from '../../UI/card/Card';
 
 const ShowError = ({ message }) => {
@@ -9,6 +11,10 @@ const ShowError = ({ message }) => {
             </h1>
         </Card>
     );
+}
+
+ShowError.propTypes = {
+    message: PropTypes.string
 }
 
 export default ShowError;

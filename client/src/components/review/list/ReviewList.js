@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
-import classes from './ReviewList.module.css';
+import PropTypes from 'prop-types';
 import { Rating } from 'react-simple-star-rating';
+
+import classes from './ReviewList.module.css';
 import PrimaryButton from '../../UI/button/PrimaryButton';
 
 const ReviewList = ({ data, onDeleteReview }) => {
@@ -29,6 +31,11 @@ const ReviewList = ({ data, onDeleteReview }) => {
             )}
         </ul>
     )
+}
+
+ReviewList.propTypes = {
+    data: PropTypes.array,
+    onDeleteReview: PropTypes.func
 }
 
 export default ReviewList;

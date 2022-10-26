@@ -1,7 +1,8 @@
-import classes from './NavBar.module.css';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
+import classes from './NavBar.module.css';
 import { loginAction } from '../../../store/login-form-slice';
 import { logoutActionHandler } from '../../../store/auth-actions';
 import { showNotif } from '../../../store/notification-actions';

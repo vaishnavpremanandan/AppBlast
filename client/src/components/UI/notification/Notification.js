@@ -1,7 +1,8 @@
-import classes from './Notification.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
+
 import { notificationAction } from '../../../store/notification-slice';
+import classes from './Notification.module.css';
 
 const classList = {
     enter: '',
