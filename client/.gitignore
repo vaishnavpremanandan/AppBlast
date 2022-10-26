@@ -4,6 +4,10 @@
 node_modules
 .pnp
 .pnp.js
+.firebaserc
+.firebase
+firebase
+firebase.json
 
 # testing
 /coverage
@@ -12,6 +16,7 @@ node_modules
 /build
 
 # misc
+.env.production
 # .DS_Store
 # .env
 # .env.local
