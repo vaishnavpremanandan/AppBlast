@@ -14,7 +14,7 @@ export const getProjects = async (category, userId, token) => {
         const data = await response.json();
         if (!response.ok) throw new Error( data.message || 'Something Went Wrong');
         return data;
-    } else if (category && category !== 'yourposts') {
+    } else if (category) {
         const response = await fetch(`${URL}/projects?category=${category}`);
         const data = await response.json();
         if (!response.ok) throw new Error( data.message || 'Something Went Wrong');

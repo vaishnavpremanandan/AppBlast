@@ -23,12 +23,12 @@ const Projects = () => {
     useEffect(() => {
         if (category && category === 'yourposts' && isLoggedIn) {
             sendRequest(category, userId, token);
-        } else if (category && category !== 'yourposts') {
+        } else if (category) {
             sendRequest(category);
         } else {
             sendRequest();
         }
-    }, [sendRequest, category, userId, token, isLoggedIn]);
+    }, [sendRequest, category]);
 
     let content = <ProjectList projects={projects} />;
 
