@@ -11,6 +11,7 @@ const NavBar = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
+    const userId = useSelector(state => state.auth.currentUserId);
 
     const logoutHandler = () => {
         dispatch(logoutActionHandler());
@@ -29,6 +30,11 @@ const NavBar = () => {
                 <NavLink to='/projects' className={classes.navlink}>
                     <li>Home</li>
                 </NavLink>
+                {isLoggedIn &&
+                    <NavLink to={`/user/${userId}`} className={classes.navlink}>
+                        <li>Your posts</li>
+                    </NavLink>
+                }
                 {isLoggedIn ? <li onClick={logoutHandler}>Logout</li> : <li onClick={showLoginHandler}>Login</li>}
             </ul>
         </nav>

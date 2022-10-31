@@ -1,7 +1,7 @@
 import { useEffect, Fragment } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import { getProjects } from '../lib/project-api';
+import { getUserProject } from '../lib/project-api';
 import Header from '../components/layout/header/Header';
 import ProjectList from '../components/project/list/ProjectList';
 import useHttp from '../hooks/useHttp';
@@ -12,19 +12,14 @@ import Category from '../components/layout/category/Category';
 
 let content;
 
-const Projects = () => {
-    const location = useLocation();
-    const { sendRequest, status, data: projects, error } = useHttp(getProjects, true);
-    const category = new URLSearchParams(location.search).get('category');
+const UserProjects = () => {
+    const { sendRequest, status, data: projects, error } = useHttp(getUserProject, true);
+    const userId = useSelector(state => state.auth.currentUserId);
+    const token = useSelector(state => state.auth.token);
 
     useEffect(() => {
-        if (category) {
-            sendRequest(category);
-        }
-        if (category === null) {
-            sendRequest();
-        }
-    }, [sendRequest, category]);
+       sendRequest(userId, token);
+    }, [sendRequest]);
 
     content = <ProjectList projects={projects} />;
 
@@ -44,11 +39,10 @@ const Projects = () => {
         <Fragment>
             <Header />
             <Container>
-                <Category />
                 {content}
             </Container>
         </Fragment>
     );
 }
 
-export default Projects;
+export default UserProjects;

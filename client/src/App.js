@@ -14,6 +14,7 @@ const NewProject = React.lazy(() => import('./pages/NewProject'));
 const ShowProject = React.lazy(() => import('./pages/ShowProject'));
 const EditProject = React.lazy(() => import('./pages/EditProject'));
 const ErrorPage = React.lazy(() => import('./pages/ErrorPage'));
+const UserProjects = React.lazy(() => import('./pages/UserProjects'));
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,11 @@ function App() {
           {isLoggedIn &&
             <Route path='/projects/:id/edit' exact>
               <EditProject />
+            </Route>
+          }
+          {isLoggedIn &&
+            <Route path='/user/:id' exact>
+              <UserProjects />
             </Route>
           }
           <Route path='*'>

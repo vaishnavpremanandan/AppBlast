@@ -3,18 +3,19 @@ const URL = process.env.REACT_APP_URL || 'http://localhost:5000';
 // Show All Projects Request
 
 export const getProjects = async (category, userId, token) => {
-    if (category === 'yourposts' && userId && token) {
-        const response = await fetch(`${URL}/projects/user/${userId}`, {
-            method: 'GET',
-            headers: {
-                'Content-type': 'application/json',
-                'Authorization': token
-            }
-        });
-        const data = await response.json();
-        if (!response.ok) throw new Error( data.message || 'Something Went Wrong');
-        return data;
-    } else if (category) {
+    // if (category === 'yourposts' && userId && token) {
+    //     const response = await fetch(`${URL}/projects/user/${userId}`, {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-type': 'application/json',
+    //             'Authorization': token
+    //         }
+    //     });
+    //     const data = await response.json();
+    //     if (!response.ok) throw new Error( data.message || 'Something Went Wrong');
+    //     return data;
+    // } 
+    if (category) {
         const response = await fetch(`${URL}/projects?category=${category}`);
         const data = await response.json();
         if (!response.ok) throw new Error( data.message || 'Something Went Wrong');

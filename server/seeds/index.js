@@ -20,8 +20,8 @@ const seedDatabase = async () => {
             date: new Date().getTime(),
             image:
             {
-                url: 'https://res.cloudinary.com/de9dxfdav/image/upload/v1665508135/AppBlast/flat_web_design_02_svdbb7.jpg',
-                filename: 'AppBlast/flat_web_design_02_svdbb7'
+                url: 'https://res.cloudinary.com/de9dxfdav/image/upload/v1666542711/AppBlast/d91a4dleelzsoqpholxj.jpg',
+                filename: 'AppBlast/d91a4dleelzsoqpholxj'
             },
             author: '633d392152a9886459c49b3b'
         });
