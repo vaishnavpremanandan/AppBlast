@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import classes from './ProjectFile.module.css';
 
 const ProjectFile = ({ id, type, onChangeHandler, error, errorMsg }) => {

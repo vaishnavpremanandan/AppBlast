@@ -37,7 +37,8 @@ const NavBar = () => {
                     </NavLink>
                 </li>   
 
-                {isLoggedIn &&
+                {
+                    isLoggedIn &&
                     <li>
                         <NavLink 
                             to={`/user/${userId}`} 
@@ -53,7 +54,7 @@ const NavBar = () => {
                     <li onClick={logoutHandler}>Logout</li> : 
                     <li onClick={showLoginHandler}>Login</li>
                 }
-                
+
             </ul>
         </nav>
     );

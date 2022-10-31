@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
 import classes from './ProjectTextarea.module.css';
 
 const ProjectTextarea = ({ value, onChangeHandler, onBlurHandler, error, errorMsg, id, name }) => {

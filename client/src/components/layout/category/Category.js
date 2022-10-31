@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-
 import classes from './Category.module.css';
 
 const categories = ['New Posts', 'Top Rated', 'Most Reviewed'];

@@ -22,7 +22,8 @@ const Header = () => {
                     and developers can showcase their work in which other users 
                     can also review. 
                 </p>
-                {isLoggedIn ? 
+                {
+                    isLoggedIn ? 
                     <Link to='/projects/new'>
                         <SecondaryButton>Share your work</SecondaryButton>
                     </Link> : 

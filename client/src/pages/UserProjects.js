@@ -28,7 +28,7 @@ const UserProjects = () => {
     }
     
     if (error) {
-        content = <ShowError message={error} />
+        content = <ShowError message={'No projects found'} />
     }
 
     if (status === 'completed' && (!projects || projects.length === 0)) {

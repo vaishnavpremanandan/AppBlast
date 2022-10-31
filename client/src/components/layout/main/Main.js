@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-
 import classes from './Main.module.css';
 
 const Main = ({ children }) => {

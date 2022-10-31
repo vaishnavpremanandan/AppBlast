@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-
 import Card from '../../UI/card/Card';
 
 const ShowError = ({ message }) => {

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
 import ProjectForm from "../components/project/form/ProjectForm";
 import { getIndividualProject, editProject } from '../lib/project-api';
 import useHttp from '../hooks/useHttp';
 import ShowError from '../components/layout/error/ShowError';
 import Main from '../components/layout/main/Main';
-
 import { showNotif } from '../store/notification-actions';
 
 const EditProject = () => {

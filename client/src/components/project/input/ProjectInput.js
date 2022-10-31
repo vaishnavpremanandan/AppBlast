@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react'
-
 import classes from './ProjectInput.module.css';
 
 const ProjectInput = ({ value, onChangeHandler, onBlurHandler, error, errorMsg, id, name }) => {

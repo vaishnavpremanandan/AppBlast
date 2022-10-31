@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
 import ProjectItem from "../item/ProjectItem";
 import classes from './ProjectList.module.css';
 

@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-
 import classes from './PrimaryButton.module.css';
 
 const PrimaryButton = ({ children, isDisabled = false, onClick}) => {
