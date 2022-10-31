@@ -2,7 +2,7 @@
 
 AppBlast is a self-promotion website where web designers and developers can showcase their work in which other users can also review. 
 
-### [Live Site](https://appblast-f0ac4.firebaseapp.com/projects)
+### [Live Site](https://appblast-f0ac4.web.app)
 
 ![Online Forum Application](https://res.cloudinary.com/de9dxfdav/image/upload/v1666718609/Project%20Promotion/Screenshot_2022-10-26_011947_holiqn.jpg)
 
