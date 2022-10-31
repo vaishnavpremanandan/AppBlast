@@ -58,7 +58,6 @@ module.exports.isReviewAuthor = async (req, res, next) => {
     const { reviewId } = req.params;
     const { author: requestUserId } = req.body;
     const review = await Review.findById(reviewId);
-    console.log(review.author);
     if (!review.author.equals(requestUserId)) {
         return res.status(400).json({ status: '400', message: 'You do not have permission to edit/delete this review' });
     }

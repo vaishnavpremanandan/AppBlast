@@ -27,15 +27,33 @@ const NavBar = () => {
         <nav className={classes.navbar}>
             <h3>AB</h3>
             <ul>
-                <NavLink to='/projects' className={classes.navlink}>
-                    <li>Home</li>
-                </NavLink>
-                {isLoggedIn &&
-                    <NavLink to={`/user/${userId}`} className={classes.navlink}>
-                        <li>Your posts</li>
+
+                <li>
+                    <NavLink 
+                        to='/projects' 
+                        className={classes.navlink} 
+                        activeClassName={classes['navlink-active']}>
+                        Home
                     </NavLink>
+                </li>   
+
+                {isLoggedIn &&
+                    <li>
+                        <NavLink 
+                            to={`/user/${userId}`} 
+                            className={classes.navlink} 
+                            activeClassName={classes['navlink-active']}>
+                            Your posts
+                        </NavLink>
+                    </li>
                 }
-                {isLoggedIn ? <li onClick={logoutHandler}>Logout</li> : <li onClick={showLoginHandler}>Login</li>}
+
+                {
+                    isLoggedIn ? 
+                    <li onClick={logoutHandler}>Logout</li> : 
+                    <li onClick={showLoginHandler}>Login</li>
+                }
+                
             </ul>
         </nav>
     );

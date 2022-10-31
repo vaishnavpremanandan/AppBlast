@@ -8,6 +8,7 @@
     color: #F2F1E9;
     z-index: 5;
     display: flex;
+    text-decoration: none;
 }
 
 .navbar li {
@@ -36,4 +37,9 @@
 .navlink {
     text-decoration: none;
     color: #F2F1E9;
+}
+
+.navlink-active {
+    text-decoration: none;
+    color: #7878bd;
 }

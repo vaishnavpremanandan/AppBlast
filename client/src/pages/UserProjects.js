@@ -1,5 +1,6 @@
 import { useEffect, Fragment } from 'react';
 import { useSelector } from 'react-redux';
+import { useParams} from 'react-router-dom';
 
 import { getUserProject } from '../lib/project-api';
 import Header from '../components/layout/header/Header';
@@ -12,12 +13,12 @@ import Container from '../components/layout/container/Container';
 let content;
 
 const UserProjects = () => {
+    const { id } = useParams();
     const { sendRequest, status, data: projects, error } = useHttp(getUserProject, true);
-    const userId = useSelector(state => state.auth.currentUserId);
     const token = useSelector(state => state.auth.token);
 
     useEffect(() => {
-       sendRequest(userId, token);
+       sendRequest(id, token);
     }, [sendRequest]);
 
     content = <ProjectList projects={projects} />;
