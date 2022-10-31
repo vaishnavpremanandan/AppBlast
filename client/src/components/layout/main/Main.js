@@ -7,7 +7,7 @@ const Main = ({ children }) => {
 }
 
 Main.propTypes = {
-    children: PropTypes.element
+    children: PropTypes.any
 }
 
 export default Main;

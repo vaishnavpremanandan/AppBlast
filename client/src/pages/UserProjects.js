@@ -8,7 +8,6 @@ import useHttp from '../hooks/useHttp';
 import Loading from '../components/UI/loading/Loading';
 import ShowError from '../components/layout/error/ShowError';
 import Container from '../components/layout/container/Container';
-import Category from '../components/layout/category/Category';
 
 let content;
 
