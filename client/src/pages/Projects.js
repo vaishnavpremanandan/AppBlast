@@ -18,11 +18,11 @@ const Projects = () => {
     const category = new URLSearchParams(location.search).get('category');
 
     useEffect(() => {
-        if (category) {
-            sendRequest(category);
-        }
-        if (category === null) {
-            sendRequest();
+        const controller = new AbortController();
+        const signal = controller.signal;
+        sendRequest(category, signal);
+        return () => {
+            controller.abort();
         }
     }, [sendRequest, category]);
 

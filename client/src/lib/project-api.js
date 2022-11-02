@@ -2,14 +2,14 @@ const URL = process.env.REACT_APP_URL || 'http://localhost:5000';
 
 // Show All Projects Request
 
-export const getProjects = async (category) => {
+export const getProjects = async (category, signal) => {
     if (category) {
-        const response = await fetch(`${URL}/projects?category=${category}`);
+        const response = await fetch(`${URL}/projects?category=${category}`, { signal: signal });
         const data = await response.json();
         if (!response.ok) throw new Error( data.message || 'Something Went Wrong');
         return data;
     }
-    const response = await fetch(`${URL}/projects`);
+    const response = await fetch(`${URL}/projects`, { signal: signal });
     const data = await response.json();
     if (!response.ok) throw new Error( data.message || 'Something Went Wrong');
     return data;
