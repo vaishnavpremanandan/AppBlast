@@ -1,48 +1,48 @@
 .itemcontainer {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .itemcontainer p {
-    margin: 0 0 0.75rem 0;
+  margin: 0 0 0.75rem 0;
 }
 
 .itemcontainer h1 {
-    margin: 0.75rem 0;
+  margin: 0.75rem 0;
 }
 
 .imgcontainer {
-    height: 15rem;
-    background-color: lightgrey;
-    display: flex;
-    justify-content: center;
+  height: 15rem;
+  background-color: lightgrey;
+  display: flex;
+  justify-content: center;
 }
 
 .imgcontainer img {
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .repolink {
-    display: block;
-    margin-bottom: 0.75rem;
+  display: block;
+  margin-bottom: 0.75rem;
 }
 
 .author {
-    color: #05060f99;
+  color: #05060f99;
 }
 
 .link {
-    margin-bottom: 0.75rem;
-    display: block;
+  margin-bottom: 0.75rem;
+  display: block;
 }
 
 .stars {
-    margin-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .textcontainer div {
-    width: 9.5rem;
-    display: flex;
-    justify-content: space-between;
+  width: 9.5rem;
+  display: flex;
+  justify-content: space-between;
 }

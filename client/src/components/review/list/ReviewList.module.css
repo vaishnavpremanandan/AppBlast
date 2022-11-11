@@ -1,22 +1,22 @@
 .reviewlist {
-    margin: 0;
-    list-style: none;
-    padding: 0;
+  margin: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .reviewlist h3 {
-    margin: 0 0 0.5rem 0;
+  margin: 0 0 0.5rem 0;
 }
 
 .reviewlist p {
-    margin: 0 0 0.75rem 0;
+  margin: 0 0 0.75rem 0;
 }
 
 .reviewlist div {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .author {
-    color: #05060f99;
+  color: #05060f99;
 }

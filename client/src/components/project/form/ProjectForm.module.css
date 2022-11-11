@@ -1,13 +1,13 @@
 .form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .form h3 {
-    margin: 0;
-    color: #7878bd;
+  margin: 0;
+  color: #7878bd;
 }
 
 .form hr {
-    width: 100%;
+  width: 100%;
 }

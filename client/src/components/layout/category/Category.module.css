@@ -1,29 +1,28 @@
 .categories {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .notactive {
-    margin-left: 2rem;
-    color: #05060f99;
-    padding-bottom: 0.5rem;
-    box-sizing: border-box;
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
+  margin-left: 2rem;
+  color: #05060f99;
+  padding-bottom: 0.5rem;
+  box-sizing: border-box;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
 }
 
 .notactive:hover {
-    color: #7878bd;
+  color: #7878bd;
 }
 
 .active {
-    margin-left: 2rem;
-    padding-bottom: 0.5rem;
-    box-sizing: border-box;
-    color: #7878bd;
-    border-bottom: 2px solid #7878bd;
-    cursor: pointer;
+  margin-left: 2rem;
+  padding-bottom: 0.5rem;
+  box-sizing: border-box;
+  color: #7878bd;
+  border-bottom: 2px solid #7878bd;
+  cursor: pointer;
 }
-

@@ -1,44 +1,44 @@
 .navbar {
-    padding: 1rem 4rem;
-    background-color: #0D0D0D;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    box-sizing: border-box;
-    color: #F2F1E9;
-    z-index: 5;
-    display: flex;
-    text-decoration: none;
+  padding: 1rem 4rem;
+  background-color: #0d0d0d;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  color: #f2f1e9;
+  z-index: 5;
+  display: flex;
+  text-decoration: none;
 }
 
 .navbar li {
-    cursor: pointer;
-    margin: 0 0 0 2rem;
+  cursor: pointer;
+  margin: 0 0 0 2rem;
 }
 
 .navbar h3 {
-    margin: 0;
-    color: #7878bd;
+  margin: 0;
+  color: #7878bd;
 }
 
 .navbar li:hover {
-    color: #7878bd;
+  color: #7878bd;
 }
 
 .navbar ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    margin: 0;
-    width: 20rem;
-    align-items: center;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  margin: 0;
+  width: 20rem;
+  align-items: center;
 }
 
 .navlink {
-    text-decoration: none;
-    color: #F2F1E9;
+  text-decoration: none;
+  color: #f2f1e9;
 }
 
 .navlink:hover {
-    color: #7878bd;
+  color: #7878bd;
 }
