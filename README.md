@@ -1,6 +1,6 @@
 # AppBlast
 
-AppBlast is a self-promotion website where web designers and developers can showcase their work in which other users can also review. 
+This is a social media web application that provides a platform for web developers and designers to express themselves, engage with others, and consume content.
 
 ### [Live Site](https://appblast-260d3.web.app/projects)
 
@@ -8,9 +8,7 @@ AppBlast is a self-promotion website where web designers and developers can show
 
 ### Description
 
-This is a self-promotion web application built with React.js, Node.js, Express.js and MongoDB 
-where users can showcase their work by posting it. 
-Registered users can also edit and delete their own posts and reviews. 
+Is a social media web application built with React, Express, Node, MongoDB that provides a platform for web developers and designers to express themselves, engage with others, and consume content.
 
 ### Requirements
 
